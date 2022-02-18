@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { Link } from "react-router-dom";
 
 const Users = () => {
   const { userSlug } = useParams();

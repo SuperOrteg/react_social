@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { fetchUserLoggedIn } from '../../redux/Todo';
+import jwt_decode from "jwt-decode";
 
 const CreatePost = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
   const token = Cookies.get('Log');
+  const decoded = jwt_decode(token);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = {
 		  text: event.target.text.value,
-		  user: token
+		  user: decoded
 		};
 
 		fetch('http://localhost:1337/posts', {
